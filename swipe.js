@@ -55,7 +55,7 @@ function startSwipeAnimation() {
 
     // Redirect to portfolio page after animation
     setTimeout(() => {
-        window.location.href = "../portofolio/index.html"; // Adjust path to portfolio
+        window.location.href = "/Portofolio/portofolio/index.html"; // Adjust path to portfolio
     }, 500); // Match animation duration
 }
 
