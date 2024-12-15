@@ -7,73 +7,64 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-.swipe-container {
-    width: 100vw;
-    height: 100vh;
+.swipe-container, .portfolio-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.swipe-container {
     background-color: #000;
-    user-select: none;
-    cursor: pointer;
+    z-index: 2; /* Tetap di atas portofolio saat awal */
 }
 
 .date-time {
     position: absolute;
-    top: 20%; /* Posisi di tengah vertikal */
-    transform: translateY(-50%); /* Koreksi agar benar-benar di tengah */
+    top: 20%;
+    transform: translateY(-50%);
     text-align: center;
     color: white;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     z-index: 10;
-    padding: 15px 30px; /* Tambahkan padding agar teks tidak terlalu mepet */
-    border-radius: 15px; /* Berikan sudut melengkung pada area blur */
-    background-color: transparent; /* Latar belakang transparan tanpa warna */
-    font-family: 'Roboto', sans-serif; /* Ganti font untuk tampilan lebih modern */
+    padding: 15px 30px;
+    border-radius: 15px;
+    background-color: none; /* Transparansi untuk latar belakang */
+    font-family: 'Roboto', sans-serif;
 }
 
 .date-time #time {
-    font-size: 3.5em; /* Perbesar ukuran font */
+    font-size: 3vw; /* Responsif berdasarkan lebar layar */
     margin: 0;
 }
 
 .date-time #date {
-    font-size: 1.1em; /* Perbesar ukuran font */
+    font-size: 1.5vw;
     margin: 0;
 }
-
 
 .swipe-hint {
     position: absolute;
-    bottom: 17%;
+    bottom: 15%; /* Sesuaikan dengan gambar agar tidak terlalu dekat */
     text-align: center;
     z-index: 10;
     animation: fadeInOut 3s infinite;
+    background-color: rgba(0, 0, 0, 0.3); /* Latar belakang semi-transparan */
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .swipe-hint p {
-    font-size: 1.2em;
+    font-size: 1.5em; /* Responsif */
     color: white;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
     margin: 0;
-}
-
-.swipe-icon {
-    font-size: 2em;
-    color: white;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
-}
-
-@keyframes fadeInOut {
-    0%, 100% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 1;
-    }
 }
 
 .swipe-image {
@@ -86,5 +77,61 @@ html, body {
 }
 
 .swipe-image.swipe-up {
-    transform: translateY(-100%);
+    transform: translateY(-100%); /* Efek swipe ke atas */
+}
+
+/* Tambahkan keyframe animasi untuk transisi halaman swipe */
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.portfolio-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 5;
+}
+
+.portfolio-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .date-time #time {
+        font-size: 3rem; /* Adjust for smaller devices */
+    }
+
+    .date-time #date {
+        font-size: 1.3rem;
+    }
+
+    .swipe-hint p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .date-time #time {
+        font-size: 3rem; /* Further adjustment for very small devices */
+    }
+
+    .date-time #date {
+        font-size: 1.2rem;
+    }
+
+    .swipe-hint p {
+        font-size: 1.6rem;
+    }
 }
