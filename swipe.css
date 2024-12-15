@@ -51,7 +51,7 @@ html, body {
 
 .swipe-hint {
     position: absolute;
-    bottom: 9%; 
+    bottom: 6%; 
     text-align: center;
     z-index: 10;
     animation: fadeInOut 3s infinite;
@@ -117,7 +117,7 @@ html, body {
     }
 
     .swipe-hint p {
-        font-size: 1.2rem;
+        font-size: 1em;
     }
 }
 
@@ -131,6 +131,6 @@ html, body {
     }
 
     .swipe-hint p {
-        font-size: 1.6rem;
+        font-size: 1rem;
     }
 }
