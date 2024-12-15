@@ -29,7 +29,6 @@ html, body {
     color: white;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     z-index: 10;
-     /* Efek blur pada latar belakang */
     padding: 15px 30px; /* Tambahkan padding agar teks tidak terlalu mepet */
     border-radius: 15px; /* Berikan sudut melengkung pada area blur */
     background-color: transparent; /* Latar belakang transparan tanpa warna */
