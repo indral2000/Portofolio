@@ -3,7 +3,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Prevent scrolling */
+    overflow: hidden; 
     font-family: Arial, sans-serif;
 }
 
@@ -22,7 +22,7 @@ html, body {
 
 .swipe-container {
     background-color: #000;
-    z-index: 2; /* Tetap di atas portofolio saat awal */
+    z-index: 2; 
 }
 
 .date-time {
@@ -35,12 +35,12 @@ html, body {
     z-index: 10;
     padding: 15px 30px;
     border-radius: 15px;
-    background-color: none; /* Transparansi untuk latar belakang */
+    background-color: none; 
     font-family: 'Roboto', sans-serif;
 }
 
 .date-time #time {
-    font-size: 3vw; /* Responsif berdasarkan lebar layar */
+    font-size: 3vw; 
     margin: 0;
 }
 
@@ -51,7 +51,7 @@ html, body {
 
 .swipe-hint {
     position: absolute;
-    bottom: 15%; /* Sesuaikan dengan gambar agar tidak terlalu dekat */
+    bottom: 15%; 
     text-align: center;
     z-index: 10;
     animation: fadeInOut 3s infinite;
@@ -60,7 +60,7 @@ html, body {
 }
 
 .swipe-hint p {
-    font-size: 1.2em; /* Responsif */
+    font-size: 1.2em; 
     color: white;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
     margin: 0;
@@ -76,10 +76,10 @@ html, body {
 }
 
 .swipe-image.swipe-up {
-    transform: translateY(-100%); /* Efek swipe ke atas */
+    transform: translateY(-100%); 
 }
 
-/* Tambahkan keyframe animasi untuk transisi halaman swipe */
+
 @keyframes fadeInOut {
     0%, 100% {
         opacity: 0.3;
@@ -106,10 +106,10 @@ html, body {
     border: none;
 }
 
-/* Media query for smaller screens */
+
 @media (max-width: 768px) {
     .date-time #time {
-        font-size: 3rem; /* Adjust for smaller devices */
+        font-size: 3rem; 
     }
 
     .date-time #date {
@@ -123,7 +123,7 @@ html, body {
 
 @media (max-width: 480px) {
     .date-time #time {
-        font-size: 3rem; /* Further adjustment for very small devices */
+        font-size: 3rem; 
     }
 
     .date-time #date {
