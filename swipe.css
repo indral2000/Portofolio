@@ -55,7 +55,6 @@ html, body {
     text-align: center;
     z-index: 10;
     animation: fadeInOut 3s infinite;
-    background-color: rgba(0, 0, 0, 0.3); /* Latar belakang semi-transparan */
     padding: 10px 20px;
     border-radius: 10px;
 }
