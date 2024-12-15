@@ -23,7 +23,7 @@ html, body {
 
 .date-time {
     position: absolute;
-    top: 50%; /* Posisi di tengah vertikal */
+    top: 20%; /* Posisi di tengah vertikal */
     transform: translateY(-50%); /* Koreksi agar benar-benar di tengah */
     text-align: center;
     color: white;
@@ -42,7 +42,7 @@ html, body {
 }
 
 .date-time #date {
-    font-size: 2em; /* Perbesar ukuran font */
+    font-size: 1.1em; /* Perbesar ukuran font */
     margin: 0;
 }
 
