@@ -1,6 +1,5 @@
 const swipeContainer = document.querySelector('.swipe-container');
-const swipeImage = document.querySelector('.swipe-image');
-const swipeHint = document.querySelector('.swipe-hint');
+const portfolioContainer = document.querySelector('.portfolio-container');
 
 let isSwiping = false;
 let startY = 0;
@@ -24,14 +23,22 @@ function startSwipe(event) {
     event.preventDefault(); // Prevent default drag behavior
     isSwiping = true;
     startY = event.touches ? event.touches[0].clientY : event.clientY; // Get starting Y position
+    swipeContainer.style.transition = 'none'; // Disable transition during swipe
+    portfolioContainer.style.transition = 'none';
 }
 
 // Track swipe movement
 function moveSwipe(event) {
     if (!isSwiping) return;
     currentY = event.touches ? event.touches[0].clientY : event.clientY; // Get current Y position
-    translateY = Math.max(0, startY - currentY); // Calculate translation, prevent negative values
-    swipeImage.style.transform = `translateY(-${translateY}px)`; // Apply translation
+    translateY = currentY - startY; // Calculate translation (positive for upward swipe)
+
+    // Prevent swiping downward
+    if (translateY > 0) translateY = 0;
+
+    // Update positions
+    swipeContainer.style.transform = `translateY(${translateY}px)`;
+    portfolioContainer.style.transform = `translateY(calc(100% + ${translateY}px))`;
 }
 
 // End swipe
@@ -39,30 +46,20 @@ function endSwipe() {
     if (!isSwiping) return;
     isSwiping = false;
 
-    // Trigger animation if swipe is sufficient
-    if (translateY > 150) {
-        startSwipeAnimation();
+    const threshold = -window.innerHeight * 0.2; // 20% of viewport height
+    if (translateY < threshold) {
+        // Complete transition to portfolio
+        swipeContainer.style.transition = 'transform 0.5s ease';
+        portfolioContainer.style.transition = 'transform 0.5s ease';
+        swipeContainer.style.transform = 'translateY(-100%)';
+        portfolioContainer.style.transform = 'translateY(0)';
     } else {
-        resetSwipe();
+        // Reset positions
+        swipeContainer.style.transition = 'transform 0.3s ease';
+        portfolioContainer.style.transition = 'transform 0.3s ease';
+        swipeContainer.style.transform = 'translateY(0)';
+        portfolioContainer.style.transform = 'translateY(100%)';
     }
-}
-
-// Trigger swipe animation
-function startSwipeAnimation() {
-    swipeHint.style.display = 'none'; // Hide hint
-    swipeImage.style.transition = 'transform 0.5s ease';
-    swipeImage.style.transform = 'translateY(-100%)'; // Slide image upwards
-
-    // Redirect to portfolio page after animation
-    setTimeout(() => {
-        window.location.href = "/Portofolio/portofolio/index.html"; // Adjust path to portfolio
-    }, 500); // Match animation duration
-}
-
-// Reset swipe position
-function resetSwipe() {
-    swipeImage.style.transition = 'transform 0.3s ease';
-    swipeImage.style.transform = 'translateY(0)'; // Reset position to initial state
 }
 
 // Add event listeners for touch devices
@@ -73,16 +70,15 @@ swipeContainer.addEventListener('touchend', endSwipe);
 // Add event listeners for mouse (desktop)
 swipeContainer.addEventListener('mousedown', (event) => {
     startSwipe(event);
-    window.addEventListener('mousemove', moveSwipe);
-    window.addEventListener('mouseup', () => {
+    const moveListener = (e) => moveSwipe(e);
+    const endListener = () => {
         endSwipe();
-        window.removeEventListener('mousemove', moveSwipe);
-    });
+        window.removeEventListener('mousemove', moveListener);
+        window.removeEventListener('mouseup', endListener);
+    };
+    window.addEventListener('mousemove', moveListener);
+    window.addEventListener('mouseup', endListener);
 });
-
-
-
-
 
 // Initialize time and date
 updateTimeAndDate();
