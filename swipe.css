@@ -48,7 +48,7 @@ html, body {
 
 .swipe-hint {
     position: absolute;
-    bottom: 15%;
+    bottom: 17%;
     text-align: center;
     z-index: 10;
     animation: fadeInOut 3s infinite;
