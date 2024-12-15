@@ -113,7 +113,7 @@ html, body {
     }
 
     .date-time #date {
-        font-size: 1.3rem;
+        font-size: 1.3em;
     }
 
     .swipe-hint p {
@@ -127,10 +127,10 @@ html, body {
     }
 
     .date-time #date {
-        font-size: 1.2rem;
+        font-size: 1.2em;
     }
 
     .swipe-hint p {
-        font-size: 1rem;
+        font-size: 1em;
     }
 }
