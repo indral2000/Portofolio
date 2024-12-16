@@ -134,6 +134,10 @@ html, body {
         font-size: 1.2em;
     }
 
+    .swipe-hint {
+        bottom: 3%;
+    }
+
     .swipe-hint p {
         font-size: 1em;
     }
